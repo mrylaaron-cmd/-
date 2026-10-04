@@ -9,13 +9,17 @@ const passwordError = document.getElementById("password-error");
 const music = document.getElementById("background-music");
 
 
-/* CHANGE THIS LATER */
-const correctPassword = "apakabar?";
+/* YOUR PASSWORD */
+const correctPassword = "yourpassword";
 
 
-/* SCREEN 1 → SCREEN 2 */
+/* =========================
+   SCREEN 1
+========================= */
 
-startScreen.addEventListener("click", () => {
+startScreen.addEventListener("click", function () {
+
+    console.log("Start screen clicked!");
 
     startScreen.classList.remove("active");
     passwordScreen.classList.add("active");
@@ -25,7 +29,9 @@ startScreen.addEventListener("click", () => {
 });
 
 
-/* CHECK PASSWORD */
+/* =========================
+   PASSWORD
+========================= */
 
 function checkPassword() {
 
@@ -33,41 +39,40 @@ function checkPassword() {
 
     if (enteredPassword === correctPassword) {
 
-    passwordScreen.classList.remove("active");
-    letterScreen.classList.add("active");
+        passwordScreen.classList.remove("active");
+        letterScreen.classList.add("active");
 
-    music.volume = 1;
+        music.volume = 1;
 
-    music.play()
-        .then(() => {
-            console.log("Music started!");
-        })
-        .catch((error) => {
+        music.play().catch(function (error) {
             console.log("Music error:", error);
         });
 
-} else {
+    } else {
 
-    passwordError.textContent = "WRONG PASSWORD.";
+        passwordError.textContent = "WRONG PASSWORD.";
 
-    passwordInput.value = "";
+        passwordInput.value = "";
 
-    passwordInput.focus();
-
-}
+        passwordInput.focus();
 
     }
+
 }
 
 
-/* ENTER BUTTON */
+/* =========================
+   ENTER BUTTON
+========================= */
 
 submitPassword.addEventListener("click", checkPassword);
 
 
-/* ENTER KEY */
+/* =========================
+   ENTER KEY
+========================= */
 
-passwordInput.addEventListener("keydown", (event) => {
+passwordInput.addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
         checkPassword();
