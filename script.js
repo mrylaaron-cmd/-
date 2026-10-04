@@ -44,7 +44,7 @@ function checkPassword() {
 
         passwordError.textContent = "WRONG PASSWORD.";
 
-        passwordInput.value = "";
+        passwordInput.value = "apakabar?";
 
         passwordInput.focus();
 
