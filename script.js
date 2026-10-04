@@ -10,7 +10,7 @@ const music = document.getElementById("background-music");
 
 
 /* CHANGE THIS LATER */
-const correctPassword = "yourpassword";
+const correctPassword = "apakabar?";
 
 
 /* SCREEN 1 → SCREEN 2 */
