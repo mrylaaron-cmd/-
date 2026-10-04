@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #000;
+    color: #f4f1de;
+    font-family: "Press Start 2P", monospace;
+    overflow: hidden;
+}
+
+
+/* SCREENS */
+
+.screen {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: #000;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* START SCREEN */
+
+#start-screen {
+    cursor: pointer;
+}
+
+.start-content {
+    text-align: center;
+}
+
+.start-content h1 {
+    font-size: clamp(22px, 5vw, 48px);
+    letter-spacing: 4px;
+    margin-bottom: 45px;
+}
+
+.blink {
+    font-size: 10px;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* PASSWORD SCREEN */
+
+.password-box {
+    width: min(90%, 600px);
+    text-align: center;
+
+    border: 4px solid #f4f1de;
+    padding: 45px 30px;
+
+    box-shadow: 8px 8px 0 #333;
+}
+
+.password-box .small-text {
+    font-size: 9px;
+    margin-bottom: 35px;
+}
+
+.password-box h2 {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+#password-input {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 16px;
+
+    background: #111;
+    border: 3px solid #f4f1de;
+
+    color: #f4f1de;
+    font-family: inherit;
+    font-size: 14px;
+
+    text-align: center;
+    outline: none;
+}
+
+#submit-password {
+    display: block;
+
+    margin: 25px auto 0;
+
+    padding: 14px 25px;
+
+    background: #f4f1de;
+    color: #000;
+
+    border: none;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+#submit-password:hover {
+    background: #aaa;
+}
+
+#password-error {
+    margin-top: 20px;
+    font-size: 8px;
+    min-height: 15px;
+}
+
+
+/* LETTER SCREEN */
+
+#letter-screen {
+    padding: 20px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #111 0px,
+            #111 2px,
+            #0b0b0b 2px,
+            #0b0b0b 4px
+        );
+}
+
+.letter-window {
+    width: min(90%, 850px);
+    max-height: 85vh;
+
+    border: 4px solid #f4f1de;
+
+    background: #111;
+
+    box-shadow: 8px 8px 0 #333;
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 16px;
+
+    border-bottom: 4px solid #f4f1de;
+
+    font-size: 9px;
+}
+
+.letter-content {
+    padding: 35px;
+
+    max-height: 70vh;
+    overflow-y: auto;
+
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.letter-content p {
+    white-space: pre-wrap;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .start-content h1 {
+        font-size: 20px;
+    }
+
+    .password-box {
+        padding: 35px 20px;
+    }
+
+    .password-box h2 {
+        font-size: 12px;
+    }
+
+    .letter-content {
+        padding: 20px;
+        font-size: 14px;
+    }
+}
