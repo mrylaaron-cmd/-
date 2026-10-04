@@ -33,48 +33,28 @@ function checkPassword() {
 
     if (enteredPassword === correctPassword) {
 
-        passwordScreen.classList.remove("active");
-        letterScreen.classList.add("active");
+    passwordScreen.classList.remove("active");
+    letterScreen.classList.add("active");
 
-       music.volume = 0.05;
+    music.volume = 1;
 
-music.play().then(() => {
-
-    const targetVolume = 0.65;
-    const fadeDuration = 20000;
-    const startTime = Date.now();
-
-    function fadeInMusic() {
-
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / fadeDuration, 1);
-
-        // Smooth easing instead of a robotic linear fade
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-        music.volume = 0.05 + 
-            (targetVolume - 0.05) * easedProgress;
-
-        if (progress < 1) {
-            requestAnimationFrame(fadeInMusic);
-        }
-
-    }
-
-    fadeInMusic();
-
-}).catch(() => {
-    console.log("Music could not autoplay.");
-});
+    music.play()
+        .then(() => {
+            console.log("Music started!");
+        })
+        .catch((error) => {
+            console.log("Music error:", error);
         });
 
-    } else {
+} else {
 
-        passwordError.textContent = "WRONG PASSWORD.";
+    passwordError.textContent = "WRONG PASSWORD.";
 
-        passwordInput.value = "";
+    passwordInput.value = "";
 
-        passwordInput.focus();
+    passwordInput.focus();
+
+}
 
     }
 }
