@@ -36,8 +36,36 @@ function checkPassword() {
         passwordScreen.classList.remove("active");
         letterScreen.classList.add("active");
 
-        music.play().catch(() => {
-            console.log("Music could not autoplay.");
+       music.volume = 0.05;
+
+music.play().then(() => {
+
+    const targetVolume = 0.65;
+    const fadeDuration = 20000;
+    const startTime = Date.now();
+
+    function fadeInMusic() {
+
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / fadeDuration, 1);
+
+        // Smooth easing instead of a robotic linear fade
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        music.volume = 0.05 + 
+            (targetVolume - 0.05) * easedProgress;
+
+        if (progress < 1) {
+            requestAnimationFrame(fadeInMusic);
+        }
+
+    }
+
+    fadeInMusic();
+
+}).catch(() => {
+    console.log("Music could not autoplay.");
+});
         });
 
     } else {
